@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>iOS第三方库-FMDB-模型进行存取(Model) | 一个孤独的搬码猿</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  
+  <meta name='theme-color' content='#FFFFFF'>
+  <meta name='msapplication-TileColor' content='#1BC3FB'>
+  <meta name='msapplication-config' content='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/browserconfig.xml'>
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+  
+  <link rel='shortcut icon' type='image/x-icon' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico'>
+  <link rel='icon' type='image/x-icon' sizes='32x32' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/favicon-32x32.png'>
+  <link rel='apple-touch-icon' type='image/png' sizes='180x180' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/apple-touch-icon.png'>
+  <link rel='mask-icon' color='#1BC3FB' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/safari-pinned-tab.svg'>
+  <link rel='manifest' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/site.webmanifest'>
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>一个孤独的搬码猿</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="搜索" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/categories/"
+            
+            
+            id="categories">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;分类
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/tag/"
+            
+            
+            id="tag">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;标签
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;简历
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          一个孤独的搬码猿
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2020/01/16/iOS%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93-FMDB-%E6%A8%A1%E5%9E%8B%E8%BF%9B%E8%A1%8C%E5%AD%98%E5%8F%96(Model)/">
+        iOS第三方库-FMDB-模型进行存取(Model)
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-01-16</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item wordcount">
+      <a class='notlink'>
+        <i class="fas fa-keyboard" aria-hidden="true"></i>
+        <p>字数统计:</p>
+        <p>1.6k字</p>
+      </a>
+    </div>
+    <div class="new-meta-item readtime">
+      <a class='notlink'>
+        <i class="fas fa-hourglass-half" aria-hidden="true"></i>
+        <p>阅读时长≈</p>
+        <p>9分</p>
+      </a>
+    </div>
+  
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>写这个Blog的目的是为了记录的学习经历，代码写的不是很好，希望读者理解。<br>日常对数据库的操作，需要设计字段，感觉太繁琐了，想找个简化的方法，就想通过这样进行实现，这也就是一种思考方式。实际实现还是看需求。具体看代码：<br>1、导入FMDB</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import FMDB</span><br></pre></td></tr></table></figure>
+<p>2、使用单利模式和必要属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">static let defaultManger &#x3D; WDDataBaseManager()</span><br><span class="line">typealias successBlock &#x3D; () -&gt;Void</span><br><span class="line">typealias failBlock &#x3D; () -&gt;Void</span><br><span class="line">private var tableName:String?</span><br></pre></td></tr></table></figure>
+<p>3、懒加载创建数据库（名称我随便取得）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lazy var fmdb:FMDatabase &#x3D; &#123;</span><br><span class="line">        let path &#x3D; NSHomeDirectory().appending(&quot;&#x2F;Documents&#x2F;testDB.db&quot;)</span><br><span class="line">        let db &#x3D; FMDatabase(path: path)</span><br><span class="line">        return db</span><br><span class="line">    &#125;()</span><br></pre></td></tr></table></figure>
+<p>4、创建表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">func creatTable(tableName:String) -&gt; Void &#123;</span><br><span class="line">        fmdb.open()</span><br><span class="line">        self.tableName &#x3D; tableName</span><br><span class="line">        let creatSql &#x3D; &quot;create table if not exists \(tableName) (id integer primary key autoincrement,model BLOB)&quot;</span><br><span class="line">        let result &#x3D; fmdb.executeUpdate(creatSql, withArgumentsIn:[])</span><br><span class="line">        if result&#123;</span><br><span class="line">            print(&quot;创建表成功&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>5、删除表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func dropTable() -&gt; Void &#123;</span><br><span class="line">       let sql &#x3D; &quot;drop table if exists &quot; + tableName!</span><br><span class="line">       let result &#x3D; fmdb.executeUpdate(sql, withArgumentsIn:[])</span><br><span class="line">       if result&#123;</span><br><span class="line">           print(&quot;删除表成功&quot;)</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>6、插入数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func insert(model:NSObject, successBlock: successBlock, failBlock: failBlock) -&gt; Void &#123;</span><br><span class="line">        let modelData &#x3D; try! NSKeyedArchiver.archivedData(withRootObject: model, requiringSecureCoding: false)</span><br><span class="line">        let insertSql &#x3D; &quot;insert into &quot; + tableName! + &quot; (model) values(?)&quot;</span><br><span class="line">        do &#123;</span><br><span class="line">            try fmdb.executeUpdate(insertSql, values: [modelData])</span><br><span class="line">            successBlock()</span><br><span class="line">        &#125; catch &#123;</span><br><span class="line">            print(fmdb.lastError())</span><br><span class="line">            failBlock()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>7、更新表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func update(model:NSObject,uid:Int32, successBlock: successBlock, failBlock: failBlock) -&gt; Void &#123;</span><br><span class="line">        let modelData &#x3D; try! NSKeyedArchiver.archivedData(withRootObject: model, requiringSecureCoding: false)</span><br><span class="line">        let updateSql &#x3D; &quot;update &quot; + tableName! + &quot; set model &#x3D; ? where id &#x3D; ?&quot;</span><br><span class="line">        do &#123;</span><br><span class="line">            try fmdb.executeUpdate(updateSql, values: [modelData, uid])</span><br><span class="line">            successBlock()</span><br><span class="line">        &#125; catch &#123;</span><br><span class="line">            print(fmdb.lastError())</span><br><span class="line">            failBlock()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>8、查询数据（这是查询所有数据，其他按需求设计）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">func selectAll() -&gt; [NSObject] &#123;</span><br><span class="line">        var tmpArr &#x3D; [NSObject]()</span><br><span class="line">        let selectSql &#x3D; &quot;select * from &quot; + tableName!</span><br><span class="line">        do &#123;</span><br><span class="line">            let rs &#x3D; try fmdb.executeQuery(selectSql, values:nil)</span><br><span class="line">            while rs.next() &#123;</span><br><span class="line">                var model &#x3D; NSObject()</span><br><span class="line">                let modelData  &#x3D; rs.data(forColumn:&quot;model&quot;)</span><br><span class="line">                let id &#x3D; rs.int(forColumn: &quot;id&quot;)</span><br><span class="line">                model &#x3D; try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(modelData!) as! NSObject</span><br><span class="line">                model.wd_fmdb_id &#x3D; id</span><br><span class="line">                tmpArr.append(model)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch &#123;</span><br><span class="line">            print(fmdb.lastError())</span><br><span class="line">        &#125;</span><br><span class="line">        return tmpArr</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>9、删除数据（这是根据Id删除的）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func delete(uid:Int32, successBlock: successBlock, failBlock: failBlock) -&gt; Void &#123;</span><br><span class="line">        let deleteSql &#x3D; &quot;delete from &quot; + tableName! + &quot; where id &#x3D; ?&quot;</span><br><span class="line">        do &#123;</span><br><span class="line">            try fmdb.executeUpdate(deleteSql, values: [uid])</span><br><span class="line">            successBlock()</span><br><span class="line">        &#125; catch &#123;</span><br><span class="line">            print(fmdb.lastError())</span><br><span class="line">            failBlock()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>10、新增分类添加默认Id</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private var wd_id_key: String &#x3D; &quot;key&quot;</span><br><span class="line"></span><br><span class="line">extension NSObject &#123;</span><br><span class="line">    open var wd_fmdb_id:Int32? &#123;</span><br><span class="line">        get &#123;</span><br><span class="line">            return (objc_getAssociatedObject(self, &amp;wd_id_key) as? Int32)</span><br><span class="line">        &#125; set(newValue) &#123;</span><br><span class="line">            objc_setAssociatedObject(self, &amp;wd_id_key, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>11、使用方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;1. 在Appdelegate中打开数据库</span><br><span class="line">func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -&gt; Bool &#123;</span><br><span class="line">        DataBaseManager.defaultManger.creatTable()</span><br><span class="line">        return true</span><br><span class="line"> &#125;</span><br><span class="line">&#x2F;&#x2F;2、添加数据</span><br><span class="line">WDDataBaseManager.defaultManger.insert(model: model, successBlock: &#123;</span><br><span class="line">                print(&quot;成功&quot;)</span><br><span class="line">            &#125;, failBlock: &#123;</span><br><span class="line">                 print(&quot;失败&quot;)</span><br><span class="line">            &#125;)</span><br><span class="line">&#x2F;&#x2F;3、修改数据</span><br><span class="line">WDDataBaseManager.defaultManger.update(model: model, uid: self.model!.wd_fmdb_id!, successBlock: &#123;</span><br><span class="line">               print(&quot;成功&quot;)</span><br><span class="line">            &#125;, failBlock: &#123;</span><br><span class="line">                print(&quot;失败&quot;)</span><br><span class="line">            &#125;)</span><br><span class="line">&#x2F;&#x2F;4、删除数据</span><br><span class="line">WDDataBaseManager.defaultManger.delete(uid: model.wd_fmdb_id!, successBlock: &#123;</span><br><span class="line">                print(&quot;成功&quot;)</span><br><span class="line">            &#125;, failBlock: &#123;</span><br><span class="line">                print(&quot;失败&quot;)</span><br><span class="line">            &#125;)</span><br><span class="line">&#x2F;&#x2F; 5、查询数据</span><br><span class="line">WDDataBaseManager.defaultManger.selectAll()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>遵循NSCoding 重写三个方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">class Model: NSObject , NSCoding&#123;</span><br><span class="line"></span><br><span class="line">    public var name:String?</span><br><span class="line">    public var phone:String?</span><br><span class="line">    public var addres:String?</span><br><span class="line">    </span><br><span class="line">    override init() &#123;</span><br><span class="line">        super.init()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func encode(with aCoder: NSCoder) &#123;</span><br><span class="line">        aCoder.encode(name, forKey: &quot;name&quot;)</span><br><span class="line">        aCoder.encode(phone, forKey: &quot;phone&quot;)</span><br><span class="line">        aCoder.encode(addres, forKey: &quot;addres&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    required init?(coder aDecoder: NSCoder) &#123;</span><br><span class="line">        super.init()</span><br><span class="line">        self.name &#x3D; aDecoder.decodeObject(forKey: &quot;name&quot;) as? String</span><br><span class="line">        self.addres &#x3D; aDecoder.decodeObject(forKey: &quot;addres&quot;) as? String</span><br><span class="line">        self.phone &#x3D; aDecoder.decodeObject(forKey: &quot;phone&quot;) as? String</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+12、效果图</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/3334769-309b5904357f7e30.gif?imageMogr2/auto-orient/strip" alt="效果图"></p>
+<p>13、Demo地址:<a href="https://github.com/wudan-ios/FMDB-Model.git" target="_blank" rel="noopener">https://github.com/wudan-ios/FMDB-Model.git</a></p>
+<hr>
+<p>补充Objective-C版本<br>1、接口文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation&#x2F;Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">NS_ASSUME_NONNULL_BEGIN</span><br><span class="line"></span><br><span class="line">@interface NSObject (addId)</span><br><span class="line"></span><br><span class="line">@property (nonatomic) NSInteger wd_fmdb_id;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">typedef void(^successBlock)(void);</span><br><span class="line">typedef void(^failBlock)(void);</span><br><span class="line"></span><br><span class="line">@interface WDDataBaseManager : NSObject</span><br><span class="line"></span><br><span class="line">+ (instancetype)manager;</span><br><span class="line">&#x2F;** 创建表 *&#x2F;</span><br><span class="line">- (void)createTableWithName:(NSString *)name;</span><br><span class="line">&#x2F;** 删除表 *&#x2F;</span><br><span class="line">- (void)dropTable;</span><br><span class="line">&#x2F;** 添加数据 *&#x2F;</span><br><span class="line">- (void)insertDataWithModel:(NSObject *)model successBlock:(successBlock)aSuccessBlock failBlock:(failBlock)aFailBlock;</span><br><span class="line">&#x2F;** 更新数据 *&#x2F;</span><br><span class="line">- (void)updateDataWithModel:(NSObject *)model uid:(NSInteger)aUid successBlock:(successBlock)aSuccessBlock failBlock:(failBlock)aFailBlock;</span><br><span class="line">&#x2F;** 删除数据 *&#x2F;</span><br><span class="line">- (void)deleteDataWithUid:(NSInteger)uid successBlock:(successBlock)aSuccessBlock failBlock:(failBlock)aFailBlock;</span><br><span class="line">&#x2F;** 查询全部数据 *&#x2F;</span><br><span class="line">- (NSArray&lt;NSObject *&gt; *)queryAllData;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line">NS_ASSUME_NONNULL_END</span><br></pre></td></tr></table></figure>
+<p>2、实现文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;WDDataBaseManager.h&quot;</span><br><span class="line">#import &lt;FMDB.h&gt;</span><br><span class="line">#import &lt;objc&#x2F;runtime.h&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">static char *wd_id_key &#x3D; &quot;key&quot;;</span><br><span class="line">@implementation NSObject (addId)</span><br><span class="line"></span><br><span class="line">- (NSInteger)wd_fmdb_id &#123;</span><br><span class="line">    NSNumber *numberValue &#x3D; objc_getAssociatedObject(self, wd_id_key);</span><br><span class="line">    return numberValue.integerValue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)setWd_fmdb_id:(NSInteger)wd_fmdb_id &#123;</span><br><span class="line">    objc_setAssociatedObject(self, wd_id_key, @(wd_fmdb_id), OBJC_ASSOCIATION_ASSIGN);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@interface WDDataBaseManager ()</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) FMDatabase *fmdb;</span><br><span class="line">@property (nonatomic, copy) NSString *tableName;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation WDDataBaseManager</span><br><span class="line"></span><br><span class="line">+ (instancetype)manager &#123;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    static WDDataBaseManager *manager &#x3D; nil;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        manager &#x3D; [[WDDataBaseManager alloc] init];</span><br><span class="line">    &#125;);</span><br><span class="line">    return manager;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)createTableWithName:(NSString *)name &#123;</span><br><span class="line">    [self.fmdb open];</span><br><span class="line">    self.tableName &#x3D; name;</span><br><span class="line">    NSString *sql &#x3D; [NSString stringWithFormat:@&quot;create table if not exists %@ (id integer primary key autoincrement,model BLOB)&quot;, name];</span><br><span class="line">    BOOL result &#x3D; [self.fmdb executeUpdate:sql];</span><br><span class="line">    if (result) &#123;</span><br><span class="line">        NSLog(@&quot;表创建成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)dropTable &#123;</span><br><span class="line">    NSString *sql &#x3D; [NSString stringWithFormat:@&quot;drop table if exists %@&quot;, self.tableName];</span><br><span class="line">    BOOL result &#x3D; [self.fmdb executeUpdate:sql];</span><br><span class="line">    if (result) &#123;</span><br><span class="line">        NSLog(@&quot;表删除成功&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)insertDataWithModel:(NSObject *)model successBlock:(successBlock)aSuccessBlock failBlock:(failBlock)aFailBlock &#123;</span><br><span class="line">    NSData *modelData &#x3D; [NSKeyedArchiver archivedDataWithRootObject:model];</span><br><span class="line">    NSString *sql &#x3D; [NSString stringWithFormat:@&quot;insert into %@ (model) values(?)&quot;, self.tableName];</span><br><span class="line">    BOOL result &#x3D; [self.fmdb executeUpdate:sql withArgumentsInArray:@[modelData]];</span><br><span class="line">    if (result) &#123;</span><br><span class="line">        aSuccessBlock();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        aFailBlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)updateDataWithModel:(NSObject *)model uid:(NSInteger)aUid successBlock:(successBlock)aSuccessBlock failBlock:(failBlock)aFailBlock &#123;</span><br><span class="line">    NSData *modelData &#x3D; [NSKeyedArchiver archivedDataWithRootObject:model];</span><br><span class="line">    NSString *sql &#x3D; [NSString stringWithFormat:@&quot;update %@ set model &#x3D; ? where id &#x3D; ?&quot;, self.tableName];</span><br><span class="line">    BOOL result &#x3D; [self.fmdb executeUpdate:sql withArgumentsInArray:@[modelData, @(aUid)]];</span><br><span class="line">    if (result) &#123;</span><br><span class="line">        aSuccessBlock();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        aFailBlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)deleteDataWithUid:(NSInteger)uid successBlock:(successBlock)aSuccessBlock failBlock:(failBlock)aFailBlock &#123;</span><br><span class="line">    NSString *sql &#x3D; [NSString stringWithFormat:@&quot;delete from %@ where id &#x3D; ?&quot;, self.tableName];</span><br><span class="line">    BOOL result &#x3D; [self.fmdb executeUpdate:sql withArgumentsInArray:@[@(uid)]];</span><br><span class="line">    if (result) &#123;</span><br><span class="line">        aSuccessBlock();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        aFailBlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (NSArray&lt;NSObject *&gt; *)queryAllData &#123;</span><br><span class="line">    NSMutableArray *array &#x3D; [NSMutableArray array];</span><br><span class="line">    NSString *sql &#x3D; [NSString stringWithFormat:@&quot;select * from %@&quot;,self.tableName];</span><br><span class="line">    @try &#123;</span><br><span class="line">        FMResultSet *rs &#x3D; [self.fmdb executeQuery:sql];</span><br><span class="line">        while (rs.next) &#123;</span><br><span class="line">            NSObject *model &#x3D; [[NSObject alloc] init];</span><br><span class="line">            NSData *modelData &#x3D; [rs dataForColumn:@&quot;model&quot;];</span><br><span class="line">            int uid &#x3D; [rs intForColumn:@&quot;id&quot;];</span><br><span class="line">            </span><br><span class="line">            model &#x3D; [NSKeyedUnarchiver unarchiveObjectWithData:modelData];</span><br><span class="line">            model.wd_fmdb_id &#x3D; uid;</span><br><span class="line">            [array addObject:model];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; @catch (NSException *exception) &#123;</span><br><span class="line">        NSLog(@&quot;%@&quot;, self.fmdb.lastError);</span><br><span class="line">    &#125; @finally &#123;</span><br><span class="line">        NSLog(@&quot;查询数据&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">   return array;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (FMDatabase *)fmdb &#123;</span><br><span class="line">    if (!_fmdb) &#123;</span><br><span class="line">        NSString *path &#x3D; [NSHomeDirectory() stringByAppendingString:@&quot;&#x2F;Documents&#x2F;testDB.db&quot;];</span><br><span class="line">        _fmdb &#x3D; [[FMDatabase alloc] initWithPath:path];</span><br><span class="line">    &#125;</span><br><span class="line">    return _fmdb;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>3、使用方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 1、打开数据库，并创建表</span><br><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;</span><br><span class="line">    </span><br><span class="line">    [[WDDataBaseManager manager] createTableWithName:@&quot;test&quot;];</span><br><span class="line">    </span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 2、添加数据</span><br><span class="line"> [[WDDataBaseManager manager] insertDataWithModel:model successBlock:^&#123;</span><br><span class="line">        &#x2F;&#x2F; TODO:</span><br><span class="line">    &#125; failBlock:^&#123;</span><br><span class="line">        &#x2F;&#x2F; TODO:</span><br><span class="line">    &#125;];</span><br><span class="line">&#x2F;&#x2F; 3、查询数据</span><br><span class="line">[[WDDataBaseManager manager] queryAllData]</span><br><span class="line">&#x2F;&#x2F; 4、修改数据</span><br><span class="line">[[WDDataBaseManager manager] updateDataWithModel:model uid:self.model.wd_fmdb_id successBlock:^&#123;</span><br><span class="line">        &#x2F;&#x2F; TODO:</span><br><span class="line">    &#125; failBlock:^&#123;</span><br><span class="line">         &#x2F;&#x2F; TODO:</span><br><span class="line">    &#125;];</span><br><span class="line">&#x2F;&#x2F; 5、删除数据</span><br><span class="line">[[WDDataBaseManager manager] deleteDataWithUid:model.wd_fmdb_id successBlock:^&#123;</span><br><span class="line">            &#x2F;&#x2F; TODO:</span><br><span class="line">        &#125; failBlock:^&#123;</span><br><span class="line">            &#x2F;&#x2F; TODO:</span><br><span class="line">        &#125;];</span><br><span class="line">&#x2F;&#x2F; 6、删除表</span><br><span class="line">[[WDDataBaseManager manager] dropTable];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>插入表中的Model需要遵循<NSCoding>(实例代码)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- (void)encodeWithCoder:(nonnull NSCoder *)aCoder &#123;</span><br><span class="line">    [aCoder encodeObject:self.name forKey:@&quot;name&quot;];</span><br><span class="line">    [aCoder encodeObject:self.phone forKey:@&quot;phone&quot;];</span><br><span class="line">    [aCoder encodeObject:self.address forKey:@&quot;address&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder &#123;</span><br><span class="line">    if (self &#x3D;&#x3D; [super init]) &#123;</span><br><span class="line">        self.name &#x3D; [aDecoder decodeObjectForKey:@&quot;name&quot;] ;</span><br><span class="line">        self.phone &#x3D; [aDecoder decodeObjectForKey:@&quot;phone&quot;];</span><br><span class="line">        self.address &#x3D; [aDecoder decodeObjectForKey:@&quot;address&quot;];</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      </div>
+      
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-01-20T09:48:38+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年1月20日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>第三方库</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/wuvdan/wuvdan.github.io/2020/01/16/iOS%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93-FMDB-%E6%A8%A1%E5%9E%8B%E8%BF%9B%E8%A1%8C%E5%AD%98%E5%8F%96(Model)/&title=iOS第三方库-FMDB-模型进行存取(Model) | 一个孤独的搬码猿&pics=https://s2.ax1x.com/2020/01/16/ljLssI.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://github.com/wuvdan/wuvdan.github.io/2020/01/16/iOS%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93-FMDB-%E6%A8%A1%E5%9E%8B%E8%BF%9B%E8%A1%8C%E5%AD%98%E5%8F%96(Model)/&title=iOS第三方库-FMDB-模型进行存取(Model) | 一个孤独的搬码猿&pics=https://s2.ax1x.com/2020/01/16/ljLssI.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://github.com/wuvdan/wuvdan.github.io/2020/01/16/iOS%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93-FMDB-%E6%A8%A1%E5%9E%8B%E8%BF%9B%E8%A1%8C%E5%AD%98%E5%8F%96(Model)/&title=iOS第三方库-FMDB-模型进行存取(Model) | 一个孤独的搬码猿&pics=https://s2.ax1x.com/2020/01/16/ljLssI.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2020/01/16/iOS%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93-RxSwift%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%B8%B8%EF%BC%88%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D%EF%BC%89/" rel="prev" title="iOS第三方库-RxSwift学习日常（基础介绍）">
+                                
+                                    iOS第三方库-RxSwift学习日常（基础介绍）
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 第三方库</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2020/01/16/iOS%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93-AFNetworking&amp;SDWebImage%E5%8E%9F%E7%90%86/" rel="prev" title="iOS第三方库-AFNetworking&amp;SDWebImage原理">
+                                  
+                                      iOS第三方库-AFNetworking&amp;SDWebImage原理
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 第三方库</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'iOS第三方库-FMDB-模型进行存取(Model)',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://s2.ax1x.com/2020/01/16/ljLssI.jpg'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+          <p>只要有相见的人，你就不是孤身一人</p>
+
+        
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:wudan_ios@163.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/wudan-ios"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=366043753"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="mailto:wudan_ios@163.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/wudan-ios"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=366043753"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div></div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('') {
+          $('').backstretch(
+          ["https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1579177241012&di=3433ccdd27b6df98a73e330e470e668a&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201503%2F25%2F133324rjhfckvd0riifnbj.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1579177241012&di=3433ccdd27b6df98a73e330e470e668a&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201503%2F25%2F133324rjhfckvd0riifnbj.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      
+<script src="/js/volantis.js"></script>
+
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "0hYP7twVgltNapFOdvVK552P-gzGzoHsz",
+    appKey: "EfMVhLUzml6p65jP9DyQziwb",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

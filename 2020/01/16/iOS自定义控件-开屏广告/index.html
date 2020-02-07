@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>iOS自定义控件-开屏广告 | 一个孤独的搬码猿</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  
+  <meta name='theme-color' content='#FFFFFF'>
+  <meta name='msapplication-TileColor' content='#1BC3FB'>
+  <meta name='msapplication-config' content='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/browserconfig.xml'>
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+  
+  <link rel='shortcut icon' type='image/x-icon' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico'>
+  <link rel='icon' type='image/x-icon' sizes='32x32' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/favicon-32x32.png'>
+  <link rel='apple-touch-icon' type='image/png' sizes='180x180' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/apple-touch-icon.png'>
+  <link rel='mask-icon' color='#1BC3FB' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/safari-pinned-tab.svg'>
+  <link rel='manifest' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/site.webmanifest'>
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>一个孤独的搬码猿</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="搜索" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/categories/"
+            
+            
+            id="categories">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;分类
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/tag/"
+            
+            
+            id="tag">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;标签
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;简历
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          一个孤独的搬码猿
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2020/01/16/iOS%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6-%E5%BC%80%E5%B1%8F%E5%B9%BF%E5%91%8A/">
+        iOS自定义控件-开屏广告
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-01-16</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Swift/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Swift</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item wordcount">
+      <a class='notlink'>
+        <i class="fas fa-keyboard" aria-hidden="true"></i>
+        <p>字数统计:</p>
+        <p>2.5k字</p>
+      </a>
+    </div>
+    <div class="new-meta-item readtime">
+      <a class='notlink'>
+        <i class="fas fa-hourglass-half" aria-hidden="true"></i>
+        <p>阅读时长≈</p>
+        <p>13分</p>
+      </a>
+    </div>
+  
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>很久没有去写博客了，最近由于公司需求变化，需要做一个新的开屏广告的页面，所以我就简单的去研究了一下。其中显示分为视频和图片，其中图片相比而言实现起来就简单的多了。</p>
+<h3 id="图片加载"><a href="#图片加载" class="headerlink" title="图片加载"></a>图片加载</h3><p>可以使用第三方的加载和缓存，例如：<code>SDWebImage</code>或者<code>Kingfisher</code>。当然也可以使用系统的<code>URLSession</code>下载到本地再进行读取加载。</p>
+<h3 id="视频加载"><a href="#视频加载" class="headerlink" title="视频加载"></a>视频加载</h3><p>我这边利用的就<code>URLSession</code>的<code>downloadTask</code>进行下载到本地再进行播放的。</p>
+<h3 id="视频下载的代码"><a href="#视频下载的代码" class="headerlink" title="视频下载的代码"></a>视频下载的代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;&#x2F; 保存URL地址进行匹配</span><br><span class="line">fileprivate let kURL_DOWNLOAD_PATH &#x3D; &quot;WDDownloadUrlPath&quot;</span><br><span class="line">&#x2F;&#x2F;&#x2F; 保存路径</span><br><span class="line">fileprivate let kDOCUMENTS_PATH &#x3D; NSHomeDirectory() + &quot;&#x2F;Documents&#x2F;Advertisement.mp4&quot;</span><br><span class="line"></span><br><span class="line">fileprivate class UserDefaultsTools &#123;</span><br><span class="line">    &#x2F;&#x2F; 设置地址</span><br><span class="line">    static func wd_set(value: String) &#123;</span><br><span class="line">        UserDefaults.standard.setValue(value, forKey: kURL_DOWNLOAD_PATH)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 读取地址</span><br><span class="line">    static func wd_get() -&gt; String &#123;</span><br><span class="line">        return UserDefaults.standard.object(forKey: kURL_DOWNLOAD_PATH) as? String ?? &quot;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fileprivate class FileManagerTools &#123;</span><br><span class="line">    &#x2F;&#x2F; 是否存在文件</span><br><span class="line">    static func isExistFile(atPath: String) -&gt; Bool &#123;</span><br><span class="line">        return FileManager.default.fileExists(atPath: atPath)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 移动文件</span><br><span class="line">    static func moveFile(fromPath: String, toPath: String) &#123;</span><br><span class="line">        try! FileManager.default.moveItem(atPath: fromPath, toPath: toPath)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 删除文件</span><br><span class="line">    static func deleteFile(atPath: String) &#123;</span><br><span class="line">        try! FileManager.default.removeItem(atPath: atPath)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 文件大小</span><br><span class="line">    static func fileSize(atPath: String) -&gt; Float &#123;</span><br><span class="line">        if self.isExistFile(atPath: kDOCUMENTS_PATH) &#123;</span><br><span class="line">            let attributes &#x3D; try! FileManager.default.attributesOfItem(atPath: atPath)</span><br><span class="line">            let size &#x3D; attributes[FileAttributeKey.size] as! Int</span><br><span class="line">            return Float(size)</span><br><span class="line">        &#125;</span><br><span class="line">        return 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class WDLaunchADDownloader: NSObject &#123;</span><br><span class="line">    &#x2F;&#x2F;&#x2F; 下载视频的路径</span><br><span class="line">    private var downloadUrlPath: String &#x3D; &quot;&quot;</span><br><span class="line">    &#x2F;&#x2F;&#x2F; 下载的Session</span><br><span class="line">    private var session: URLSession!</span><br><span class="line">    &#x2F;&#x2F;&#x2F; 下载的任务</span><br><span class="line">    private var downloadTask: URLSessionDownloadTask!</span><br><span class="line">    &#x2F;&#x2F;&#x2F; 记录是否在下载</span><br><span class="line">    private var downloading: Bool &#x3D; false</span><br><span class="line">    &#x2F;&#x2F;&#x2F; 记录已下载的数据</span><br><span class="line">    private var downloadData: Data?</span><br><span class="line"></span><br><span class="line">    &#x2F;* 下载视频 *&#x2F;</span><br><span class="line">    static func downloadVideo(path: String) -&gt; String &#123;</span><br><span class="line">        let downloader &#x3D; WDLaunchADDownloader()</span><br><span class="line">        return downloader.setupDownload(with: path)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private func setupDownload(with path: String) -&gt; String &#123;</span><br><span class="line">        downloadUrlPath &#x3D; path &#x2F;&#x2F; 获取视频播放网络路径</span><br><span class="line"></span><br><span class="line">        let configuration &#x3D; URLSessionConfiguration.default</span><br><span class="line">        configuration.isDiscretionary &#x3D; true</span><br><span class="line">        session &#x3D; URLSession(configuration: configuration, delegate: self, delegateQueue: nil)</span><br><span class="line">        </span><br><span class="line">        let request &#x3D; URLRequest.init(url: URL(string: path)!)</span><br><span class="line">        downloadTask &#x3D; session.downloadTask(with: request)</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; 网址不同，删除原本的，下载最新的</span><br><span class="line">        if UserDefaultsTools.wd_get() !&#x3D; path &#123;</span><br><span class="line">            UserDefaultsTools.wd_set(value: &quot;&quot;)</span><br><span class="line">            if FileManagerTools.isExistFile(atPath: kDOCUMENTS_PATH) &#123;</span><br><span class="line">                FileManagerTools.deleteFile(atPath: kDOCUMENTS_PATH)</span><br><span class="line">            &#125;</span><br><span class="line">            &#x2F;&#x2F; 开始下载</span><br><span class="line">            startDownload()</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; 如果已存在文件 就加载视频 否则加载图片</span><br><span class="line">        if FileManagerTools.isExistFile(atPath: kDOCUMENTS_PATH) &#123;</span><br><span class="line">            return kDOCUMENTS_PATH</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return &quot;&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; MARK: - 开始下载</span><br><span class="line">    private func startDownload() &#123;</span><br><span class="line">        downloading &#x3D; true</span><br><span class="line">        downloadTask.resume()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; MARK: - 暂停下载</span><br><span class="line">    private func pauseDownload() &#123;</span><br><span class="line">        downloadTask.cancel &#123; [weak self] (resumeData) in</span><br><span class="line">            self?.downloadData &#x3D; resumeData</span><br><span class="line">        &#125;</span><br><span class="line">        downloading &#x3D; false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension WDLaunchADDownloader: URLSessionDownloadDelegate &#123;</span><br><span class="line">    &#x2F;&#x2F; 下载代理方法，下载结束</span><br><span class="line">    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) &#123;</span><br><span class="line">        let locationPath &#x3D; location.path</span><br><span class="line">        FileManagerTools.moveFile(fromPath: locationPath, toPath: kDOCUMENTS_PATH)</span><br><span class="line">        UserDefaultsTools.wd_set(value: downloadUrlPath)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 下载代理方法，监听下载进度</span><br><span class="line">    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) &#123;</span><br><span class="line">        if FileManagerTools.fileSize(atPath: kDOCUMENTS_PATH) &gt;&#x3D; Float(totalBytesExpectedToWrite) &#123;</span><br><span class="line">            pauseDownload()</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">        print(String(format: &quot;🍉 Advertising Video Download Progress: %0.2f&quot;, Float(totalBytesWritten) &#x2F; Float(totalBytesExpectedToWrite)))</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 如果下载失败了</span><br><span class="line">    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) &#123;</span><br><span class="line">        if error !&#x3D; nil &#123;</span><br><span class="line">            UserDefaultsTools.wd_set(value: &quot;&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="视频播放代码"><a href="#视频播放代码" class="headerlink" title="视频播放代码"></a>视频播放代码</h3><p>其中获取到加载的种类(图片、视频)，页面进行相应的布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import UIKit</span><br><span class="line">import AVFoundation</span><br><span class="line"></span><br><span class="line">class WDLaunchADPlayerManager: NSObject &#123;</span><br><span class="line">    </span><br><span class="line">    static let share &#x3D; WDLaunchADPlayerManager()</span><br><span class="line">    </span><br><span class="line">    var playerItem: AVPlayerItem!</span><br><span class="line">    var player: AVPlayer!</span><br><span class="line">    var playerLayer: CALayer!</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 开始播放 &lt;播放下载好再本地文件夹里面的视频文件&gt;</span><br><span class="line">    func playItem(with url: String) &#123;</span><br><span class="line">        playerItem &#x3D; AVPlayerItem(url: URL(fileURLWithPath: url))</span><br><span class="line">        player &#x3D; AVPlayer(playerItem: playerItem)</span><br><span class="line">        playerLayer &#x3D; AVPlayerLayer(player: player)</span><br><span class="line">        player.usesExternalPlaybackWhileExternalScreenIsActive &#x3D; true</span><br><span class="line">        player.play()</span><br><span class="line">        player.volume &#x3D; 0 &#x2F;&#x2F; 静音播放</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 停止播放</span><br><span class="line">    func stopPlay() &#123;</span><br><span class="line">        player.pause()</span><br><span class="line">        player &#x3D; nil</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="页面显示"><a href="#页面显示" class="headerlink" title="页面显示"></a>页面显示</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">import UIKit</span><br><span class="line">import SDWebImage</span><br><span class="line"></span><br><span class="line">class WDLaunchADController: UIViewController &#123;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;&#x2F; 播放器的layer层</span><br><span class="line">    private var playerLayer: CALayer &#x3D; CALayer()</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;&#x2F; 图片加载</span><br><span class="line">    private let imageView: UIImageView &#x3D; &#123;</span><br><span class="line">        let imageV &#x3D; UIImageView()</span><br><span class="line">        imageV.contentMode &#x3D; .scaleAspectFill</span><br><span class="line">        imageV.clipsToBounds &#x3D; true</span><br><span class="line">        return imageV</span><br><span class="line">    &#125;()</span><br><span class="line">    </span><br><span class="line">    deinit &#123;</span><br><span class="line">        print(&quot;&#x3D;&#x3D;[\(type(of: self))] deinit&#x3D;&#x3D;&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    override func viewDidLoad() &#123;</span><br><span class="line">        super.viewDidLoad()</span><br><span class="line">        view.backgroundColor &#x3D; .white</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 配置页面样式</span><br><span class="line">    func setup(with adType: WDLaunchADType, url: String, bottomLogoView: UIView? &#x3D; UIView(), bottomLogoViewHeight: CGFloat &#x3D; 180) &#123;</span><br><span class="line">        if adType &#x3D;&#x3D; .image &#123;</span><br><span class="line">            imageView.isUserInteractionEnabled &#x3D; true</span><br><span class="line">            view.addSubview(imageView)</span><br><span class="line">            imageView.sd_setImage(with: URL(string: url), completed: nil)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            WDLaunchADPlayerManager.share.playItem(with: url)</span><br><span class="line">            if let layer &#x3D; WDLaunchADPlayerManager.share.playerLayer &#123;</span><br><span class="line">                self.view.layer.addSublayer(layer)</span><br><span class="line">                playerLayer &#x3D; layer</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if let logoView &#x3D; bottomLogoView &#123;</span><br><span class="line">            view.addSubview(logoView)</span><br><span class="line">            logoView.frame &#x3D; CGRect(x: 0, y: view.frame.height - bottomLogoViewHeight, width: view.frame.width, height: bottomLogoViewHeight)</span><br><span class="line">            if adType &#x3D;&#x3D; .image &#123;</span><br><span class="line">                imageView.frame &#x3D; CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - bottomLogoViewHeight)</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                playerLayer.frame &#x3D; CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if adType &#x3D;&#x3D; .image &#123;</span><br><span class="line">                imageView.frame &#x3D; view.bounds</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                playerLayer.frame &#x3D; view.bounds</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    override var shouldAutorotate: Bool &#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    override var prefersHomeIndicatorAutoHidden: Bool &#123;</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="加载控制代码"><a href="#加载控制代码" class="headerlink" title="加载控制代码"></a>加载控制代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br></pre></td><td class="code"><pre><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">enum WDLaunchADType &#123;</span><br><span class="line">    case image</span><br><span class="line">    case video</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;&#x2F; 是否是刘海屏系列</span><br><span class="line">var kIS_IPHONEX: Bool &#123;</span><br><span class="line">    var iPhoneX &#x3D; false</span><br><span class="line">    if UIDevice.current.userInterfaceIdiom !&#x3D; .phone &#123;</span><br><span class="line">        return iPhoneX</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if #available(iOS 11.0, *) &#123;</span><br><span class="line">        if let mainWindow &#x3D; UIApplication.shared.delegate?.window &#123;</span><br><span class="line">            if (mainWindow?.safeAreaInsets.bottom)! &gt; CGFloat(0.0) &#123;</span><br><span class="line">                iPhoneX &#x3D; true</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return iPhoneX</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;&#x2F; 状态栏高度</span><br><span class="line">var kSTATUS_HEIGHT: CGFloat &#123;</span><br><span class="line">    return kIS_IPHONEX ? UIApplication.shared.statusBarFrame.height : 22</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; MARK: - Main</span><br><span class="line">class WDLaunchAD: NSObject &#123;</span><br><span class="line">    &#x2F;&#x2F; MARK: Public</span><br><span class="line">    &#x2F;&#x2F;&#x2F; 静态方法</span><br><span class="line">    &#x2F;&#x2F;&#x2F;</span><br><span class="line">    &#x2F;&#x2F;&#x2F; - Parameters:</span><br><span class="line">    &#x2F;&#x2F;&#x2F;   - adType: 广告类型 &#96;图片&#96; &#96;视频&lt;无声音&gt;&#96;</span><br><span class="line">    &#x2F;&#x2F;&#x2F;   - url: 广告地址</span><br><span class="line">    &#x2F;&#x2F;&#x2F;   - durition: 显示时间</span><br><span class="line">    &#x2F;&#x2F;&#x2F;   - bottomView: 底部视图</span><br><span class="line">    &#x2F;&#x2F;&#x2F;   - buttomViewHeight: 底部视图高度</span><br><span class="line">    &#x2F;&#x2F;&#x2F;   - clickBlock: 广告点击事件回调</span><br><span class="line">    static func setup(with adType: WDLaunchADType &#x3D; .image,</span><br><span class="line">                      url: String, durition: Int,</span><br><span class="line">                      bottomView: UIView? &#x3D; UIView(),</span><br><span class="line">                      buttomViewHeight: CGFloat &#x3D; 0,</span><br><span class="line">                      clickBlock: @escaping (() -&gt; Void)) &#123;</span><br><span class="line">        </span><br><span class="line">        let manager &#x3D; WDLaunchAD()</span><br><span class="line">        manager.show(with: adType, url: url, durition: durition, bottomView: bottomView, buttomViewHeight: buttomViewHeight ,clickBlock: clickBlock)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; MARK: Private</span><br><span class="line">    &#x2F;&#x2F;&#x2F; 页面显示的window根控制器，除了倒计时按钮，其他元素在控制器中配置</span><br><span class="line">    private let wdLaunchADViewController &#x3D; WDLaunchADController()</span><br><span class="line">    &#x2F;&#x2F;&#x2F; 显示的时间</span><br><span class="line">    private var timerInterval: Int &#x3D; 0</span><br><span class="line">    &#x2F;&#x2F;&#x2F; 定时器</span><br><span class="line">    private var timer: Timer?</span><br><span class="line">    &#x2F;&#x2F;&#x2F; 点击事件回调</span><br><span class="line">    private var clickBlockHandle: (() -&gt; Void)?</span><br><span class="line">    &#x2F;&#x2F;&#x2F; 页面显示的window</span><br><span class="line">    private let window: UIWindow &#x3D; &#123;</span><br><span class="line">        let window &#x3D; UIWindow.init(frame: UIScreen.main.bounds)</span><br><span class="line">        window.rootViewController?.view.backgroundColor &#x3D; .black</span><br><span class="line">        window.rootViewController?.view.isUserInteractionEnabled &#x3D; false</span><br><span class="line">        window.windowLevel &#x3D; UIWindow.Level.statusBar + 1</span><br><span class="line">        window.isHidden &#x3D; false</span><br><span class="line">        window.alpha &#x3D; 1</span><br><span class="line">        return window</span><br><span class="line">    &#125;()</span><br><span class="line">    &#x2F;&#x2F;&#x2F; 倒计时按钮</span><br><span class="line">    private let timeButton: UIButton &#x3D; &#123;</span><br><span class="line">        let button &#x3D; UIButton(type: .custom)</span><br><span class="line">        button.backgroundColor &#x3D; UIColor(white: 0, alpha: 0.5)</span><br><span class="line">        button.setTitleColor(.white, for: .normal)</span><br><span class="line">        button.titleLabel?.font &#x3D; UIFont.systemFont(ofSize: 15)</span><br><span class="line">        return button</span><br><span class="line">    &#125;()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; MARK: - 页面初始化与销毁</span><br><span class="line">fileprivate extension WDLaunchAD &#123;</span><br><span class="line">    &#x2F;&#x2F; 控制器初始化页面</span><br><span class="line">    func show(with adType: WDLaunchADType, url: String, durition: Int, bottomView: UIView?, buttomViewHeight: CGFloat, clickBlock: @escaping (() -&gt; Void)) &#123;</span><br><span class="line">        clickBlockHandle &#x3D; clickBlock</span><br><span class="line">        timerInterval &#x3D; durition</span><br><span class="line">        window.rootViewController &#x3D; wdLaunchADViewController</span><br><span class="line">        wdLaunchADViewController.view.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(adGuestureTargetAction)))</span><br><span class="line">        wdLaunchADViewController.setup(with: adType, url: url, bottomLogoView: bottomView, bottomLogoViewHeight: buttomViewHeight)</span><br><span class="line">        addTimeButton()</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; 开始倒计时</span><br><span class="line">        DispatchQueue.main.asyncAfter(deadline: .now() + 1) &#123;</span><br><span class="line">            self.timer &#x3D; Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerDown(timer:)), userInfo: nil, repeats: true)</span><br><span class="line">            if let timer &#x3D; self.timer &#123;</span><br><span class="line">                timer.fire()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 移除定时器与视图</span><br><span class="line">    func removeWindow() &#123;</span><br><span class="line">        &#x2F;&#x2F; 停止播放视频</span><br><span class="line">        if WDLaunchADPlayerManager.share.player !&#x3D; nil  &#123;</span><br><span class="line">            WDLaunchADPlayerManager.share.stopPlay()</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; 停止倒计时并移除</span><br><span class="line">        if let timer &#x3D; timer &#123;</span><br><span class="line">            timer.invalidate()</span><br><span class="line">        &#125;</span><br><span class="line">        timer &#x3D; nil</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; 移除当前视图</span><br><span class="line">        UIView.transition(with: window, duration: 0.8, options: UIView.AnimationOptions.curveEaseOut, animations: &#123;</span><br><span class="line">            self.window.alpha &#x3D; 0;</span><br><span class="line">        &#125;) &#123; (finished) in</span><br><span class="line">            self.window.rootViewController &#x3D; nil</span><br><span class="line">            self.window.removeFromSuperview()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; MARK: - 页面控件配置</span><br><span class="line">private extension WDLaunchAD &#123;</span><br><span class="line">    &#x2F;&#x2F; 配置时间按钮</span><br><span class="line">    func addTimeButton() &#123;</span><br><span class="line">        timeButton.setTitle(&quot;   跳过 \(timerInterval)   &quot;, for: .normal)</span><br><span class="line">        timeButton.addTarget(self, action: #selector(buttonTargetAction(sender:)), for: .touchUpInside)</span><br><span class="line">        window.addSubview(timeButton)</span><br><span class="line">        timeButton.translatesAutoresizingMaskIntoConstraints &#x3D; false</span><br><span class="line">        window.addConstraints([</span><br><span class="line">            NSLayoutConstraint(item: timeButton, attribute: .trailing, relatedBy: .equal, toItem: window, attribute: .trailing, multiplier: 1, constant: -15),</span><br><span class="line">            NSLayoutConstraint(item: timeButton, attribute: .top, relatedBy: .equal, toItem: window, attribute: .top, multiplier: 1, constant: kSTATUS_HEIGHT),</span><br><span class="line">        ])</span><br><span class="line">        timeButton.layoutIfNeeded()</span><br><span class="line">        timeButton.layer.cornerRadius &#x3D; timeButton.frame.height &#x2F; 2.0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; MARK: - 倒计时与倒计时点击事件</span><br><span class="line">@objc private extension WDLaunchAD &#123;</span><br><span class="line">    &#x2F;&#x2F; 倒计时</span><br><span class="line">    func timerDown(timer: Timer) &#123;</span><br><span class="line">        timerInterval -&#x3D; 1</span><br><span class="line">        timeButton.setTitle(&quot;   跳过 \(timerInterval)   &quot;, for: .normal)</span><br><span class="line">        if timerInterval &#x3D;&#x3D; 0 &#123;</span><br><span class="line">            removeWindow()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 广告页移除</span><br><span class="line">    func buttonTargetAction(sender: UIButton) &#123;</span><br><span class="line">        removeWindow()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 点击手势</span><br><span class="line">    func adGuestureTargetAction() &#123;</span><br><span class="line">        if clickBlockHandle !&#x3D; nil &#123;</span><br><span class="line">            clickBlockHandle!()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="加载方式"><a href="#加载方式" class="headerlink" title="加载方式"></a>加载方式</h3><p>在<code>AppDelgate</code>中的<code>didFinishLaunchingWithOptions</code>方法中调用方法。<br>我这为了适应变化的需要，提供了相对自由的显示方式</p>
+<p>底部的logo视图是可以自定义的，传入对应显示的高度即可。</p>
+<p>图片地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let imagePath &#x3D; &quot;https:&#x2F;&#x2F;timgsa.baidu.com&#x2F;timg?image&amp;quality&#x3D;80&amp;size&#x3D;b9999_10000&amp;sec&#x3D;1567682065374&amp;di&#x3D;4c2a4d2008a4e951b34b3d130db19d12&amp;imgtype&#x3D;0&amp;src&#x3D;http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201704%2F14%2F20170414155109_Cmz24.jpeg&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>仅显示图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WDLaunchAD.setup(with: .image, url: imagePath, durition: 5, bottomView: WDLaunchADBottomLogoView(), buttomViewHeight: 180) &#123;</span><br><span class="line">    print(&quot;✨ 点击了广告&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.ax1x.com/2020/01/20/1Pdk1U.png" alt=""></p>
+</li>
+<li><p>显示图片与底部logo视图<br>底部视图代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; MARK: - 底部logo视图</span><br><span class="line">class WDLaunchADBottomLogoView: UIView &#123;</span><br><span class="line">    &#x2F;&#x2F; logo</span><br><span class="line">    let logoImageView: UIImageView &#x3D; &#123;</span><br><span class="line">        let imageV &#x3D; UIImageView()</span><br><span class="line">        imageV.image &#x3D; UIImage(named: &quot;nav-logo-4c7bbafe27adc892f3046e6978459bac&quot;)?.withRenderingMode(.alwaysTemplate)</span><br><span class="line">        imageV.tintColor &#x3D; .red</span><br><span class="line">        return imageV</span><br><span class="line">    &#125;()</span><br><span class="line">    </span><br><span class="line">    override init(frame: CGRect) &#123;</span><br><span class="line">        super.init(frame: frame)</span><br><span class="line">        setupSubviews()</span><br><span class="line">        setupSubviewsLayouts()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    required init?(coder aDecoder: NSCoder) &#123;</span><br><span class="line">        fatalError(&quot;init(coder:) has not been implemented&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; MARK: 底部logo视图页面配置与布局</span><br><span class="line">extension WDLaunchADBottomLogoView &#123;</span><br><span class="line">    func setupSubviews() &#123;</span><br><span class="line">        backgroundColor &#x3D; .white</span><br><span class="line">        addSubview(logoImageView)</span><br><span class="line">        logoImageView.translatesAutoresizingMaskIntoConstraints &#x3D; false</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func setupSubviewsLayouts() &#123;</span><br><span class="line">        addConstraints([</span><br><span class="line">            NSLayoutConstraint(item: logoImageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0),</span><br><span class="line">            NSLayoutConstraint(item: logoImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)</span><br><span class="line">        ])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>加载代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WDLaunchAD.setup(with: .image, url: imagePath, durition: 5, bottomView: WDLaunchADBottomLogoView(), buttomViewHeight: 180) &#123;</span><br><span class="line">    print(&quot;✨ 点击了广告&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.ax1x.com/2020/01/20/1PdeB9.png" alt=""></p>
+</li>
+<li><p>加载视频<br>首先需要现在有网的环境缓存到本地，我这边的思想是，首次进入App默认加载图片，然后下载广告的视频到本地。再次进入的时候，判断是否是缓存的视频，是则进行播放。是否加载的<code>URL</code>与缓存的不同，则依旧加载图片，并下载最新<code>URL</code>下的视频。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let path &#x3D; WDLaunchADDownloader.downloadVideo(path: &quot;http:&#x2F;&#x2F;wvideo.spriteapp.cn&#x2F;video&#x2F;2018&#x2F;0514&#x2F;eede6198571f11e8b5ca842b2b4c75ab_wpd.mp4&quot;)</span><br><span class="line">    if path.count &gt; 0 &#123;</span><br><span class="line">        WDLaunchAD.setup(with: .video, url: path, durition: 5, bottomView: WDLaunchADBottomLogoView(), buttomViewHeight: 180) &#123;</span><br><span class="line">            print(&quot;✨ 点击了广告&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        WDLaunchAD.setup(with: .image, url: imagePath, durition: 5, bottomView: WDLaunchADBottomLogoView(), buttomViewHeight: 180) &#123;</span><br><span class="line">            print(&quot;✨ 点击了广告&quot;)</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>效果图，没有找到合适大小的视频就凑合着用了。</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2020/01/20/1PdMh6.png" alt=""></p>
+<blockquote>
+<p>说明:</p>
+<ol>
+<li>页面消失的动画，没有做过多的处理</li>
+<li>视频没有做循环播放</li>
+</ol>
+</blockquote>
+
+      </div>
+      
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-01-20T10:20:51+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年1月20日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>自定义控件</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/wuvdan/wuvdan.github.io/2020/01/16/iOS%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6-%E5%BC%80%E5%B1%8F%E5%B9%BF%E5%91%8A/&title=iOS自定义控件-开屏广告 | 一个孤独的搬码猿&pics=https://s2.ax1x.com/2020/01/16/ljLssI.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://github.com/wuvdan/wuvdan.github.io/2020/01/16/iOS%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6-%E5%BC%80%E5%B1%8F%E5%B9%BF%E5%91%8A/&title=iOS自定义控件-开屏广告 | 一个孤独的搬码猿&pics=https://s2.ax1x.com/2020/01/16/ljLssI.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://github.com/wuvdan/wuvdan.github.io/2020/01/16/iOS%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6-%E5%BC%80%E5%B1%8F%E5%B9%BF%E5%91%8A/&title=iOS自定义控件-开屏广告 | 一个孤独的搬码猿&pics=https://s2.ax1x.com/2020/01/16/ljLssI.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2020/01/16/iOS%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6-%E6%8F%90%E9%86%92%E6%9D%A1/" rel="prev" title="iOS自定义控件-提醒条">
+                                
+                                    iOS自定义控件-提醒条
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 自定义控件</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2020/01/16/iOS%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6-%E5%88%86%E6%AE%B5%E9%80%89%E6%8B%A9%E5%99%A8/" rel="prev" title="iOS自定义控件-分段选择器">
+                                  
+                                      iOS自定义控件-分段选择器
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 自定义控件</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'iOS自定义控件-开屏广告',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://s2.ax1x.com/2020/01/16/ljLssI.jpg'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+          <p>只要有相见的人，你就不是孤身一人</p>
+
+        
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:wudan_ios@163.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/wudan-ios"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=366043753"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#图片加载"><span class="toc-text">图片加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视频加载"><span class="toc-text">视频加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视频下载的代码"><span class="toc-text">视频下载的代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视频播放代码"><span class="toc-text">视频播放代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页面显示"><span class="toc-text">页面显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载控制代码"><span class="toc-text">加载控制代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载方式"><span class="toc-text">加载方式</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="mailto:wudan_ios@163.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/wudan-ios"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=366043753"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div></div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('') {
+          $('').backstretch(
+          ["https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1579177241012&di=3433ccdd27b6df98a73e330e470e668a&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201503%2F25%2F133324rjhfckvd0riifnbj.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1579177241012&di=3433ccdd27b6df98a73e330e470e668a&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201503%2F25%2F133324rjhfckvd0riifnbj.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      
+<script src="/js/volantis.js"></script>
+
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "0hYP7twVgltNapFOdvVK552P-gzGzoHsz",
+    appKey: "EfMVhLUzml6p65jP9DyQziwb",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

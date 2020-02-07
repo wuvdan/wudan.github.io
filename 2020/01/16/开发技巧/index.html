@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>开发技巧 | 一个孤独的搬码猿</title>
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  
+  <meta name='theme-color' content='#FFFFFF'>
+  <meta name='msapplication-TileColor' content='#1BC3FB'>
+  <meta name='msapplication-config' content='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/browserconfig.xml'>
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+  
+  <link rel='shortcut icon' type='image/x-icon' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico'>
+  <link rel='icon' type='image/x-icon' sizes='32x32' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/favicon-32x32.png'>
+  <link rel='apple-touch-icon' type='image/png' sizes='180x180' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/apple-touch-icon.png'>
+  <link rel='mask-icon' color='#1BC3FB' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/safari-pinned-tab.svg'>
+  <link rel='manifest' href='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicons/site.webmanifest'>
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  
+
+  
+    
+<link rel="stylesheet" href="/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>一个孤独的搬码猿</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="搜索" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/categories/"
+            
+            
+            id="categories">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;分类
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/tag/"
+            
+            
+            id="tag">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;标签
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;简历
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          一个孤独的搬码猿
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;近期文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于小站
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2020/01/16/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/">
+        开发技巧
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2020-01-16</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/iOS%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>iOS开发技巧</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item wordcount">
+      <a class='notlink'>
+        <i class="fas fa-keyboard" aria-hidden="true"></i>
+        <p>字数统计:</p>
+        <p>1.2k字</p>
+      </a>
+    </div>
+    <div class="new-meta-item readtime">
+      <a class='notlink'>
+        <i class="fas fa-hourglass-half" aria-hidden="true"></i>
+        <p>阅读时长≈</p>
+        <p>6分</p>
+      </a>
+    </div>
+  
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p><img src="https://s2.ax1x.com/2020/01/20/1PtYFK.jpg" alt=""></p>
+<a id="more"></a>
+<p>1、PrefixHeader导入位置写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(SRCROOT)&#x2F;$(PROJECT_NAME)&#x2F;&lt;#文件所在文件夹名称#&gt;&#x2F;PrefixHeader.pch</span><br></pre></td></tr></table></figure>
+<p>2、隐藏导航栏的两种方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;方式一 《推荐》</span><br><span class="line">&#x2F;&#x2F;在需要隐藏的viewController中遵循&lt;UINavigationControllerDelegate&gt;</span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line"> &#x2F;&#x2F; 设置导航控制器的代理为self</span><br><span class="line">    self.navigationController.delegate &#x3D; self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#pragma mark - UINavigationControllerDelegate</span><br><span class="line">&#x2F;&#x2F; 将要显示控制器</span><br><span class="line">- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated &#123;</span><br><span class="line">    &#x2F;&#x2F; 判断要显示的控制器是否是自己</span><br><span class="line">    BOOL isShowHomePage &#x3D; [viewController isKindOfClass:[self class]];</span><br><span class="line">    </span><br><span class="line">    [self.navigationController setNavigationBarHidden:isShowHomePage animated:YES];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;方式二</span><br><span class="line">- (void)viewWillAppear:(BOOL)animated &#123;</span><br><span class="line">    [super viewWillAppear:animated];</span><br><span class="line"></span><br><span class="line">    [self.navigationController setNavigationBarHidden:YES animated:YES];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewWillDisappear:(BOOL)animated &#123;</span><br><span class="line">    [super viewWillDisappear:animated];</span><br><span class="line"></span><br><span class="line">    [self.navigationController setNavigationBarHidden:NO animated:YES];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、TabBarItem要求只显示图片不显示文字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; self 表示需要设置样式的控制器</span><br><span class="line">[self.tabBarItem setImageInsets:UIEdgeInsetsMake(6, 0, -6, 0)];</span><br></pre></td></tr></table></figure>
+<p>4、TableView或CollectionView单选</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--步骤一、 声明一个全局变量--&gt;</span><br><span class="line">@property (nonatomic, assign) NSInteger selectedIndex;</span><br><span class="line">&lt;!--步骤二、TableView或CollectionView点击事件的方法中保存点击的index，并刷新--&gt;</span><br><span class="line">self.selectedIndex &#x3D; indexPath.row;</span><br><span class="line">[collectionView reloadData];或[tableView reloadData];</span><br><span class="line">&lt;!--步骤三、在cellForItemAtIndexPath或cellForRowAtIndexPath方法中判断是否是所保存的index--&gt;</span><br><span class="line">if (self.selectedIndex &#x3D;&#x3D; indexPath.row) &#123;</span><br><span class="line">    &#x2F;&#x2F; 设置选中样式</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    &#x2F;&#x2F; 设置成默认样式    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5、怎么区分真机还是模拟器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#if TARGET_IPHONE_SIMULATOR  </span><br><span class="line">    NSLog(@&quot;run on simulator&quot;);  </span><br><span class="line">#define SIMULATOR_TEST</span><br><span class="line">#else  </span><br><span class="line">&#x2F;&#x2F;不定义SIMULATOR_TEST这个宏</span><br><span class="line">    NSLog(@&quot;run on device&quot;);  </span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>6、if Debug</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#ifdef DEBUG    </span><br><span class="line">&#x2F;&#x2F; do sth</span><br><span class="line">#else   </span><br><span class="line">&#x2F;&#x2F; do sth</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>7、一键清理所有模拟器安装过的APP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 先关闭所有模拟器 在终端中输入下面命令即可</span><br><span class="line">xcrun simctl erase all</span><br></pre></td></tr></table></figure>
+<p>8、SDWebImage清理缓存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (void)didReceiveMemoryWarning &#123;</span><br><span class="line">    [super didReceiveMemoryWarning];</span><br><span class="line">    [[[SDWebImageManager sharedManager] imageCache] clearMemory];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>9、UITableView的HeaderView下拉放大</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1、View1:作为显示View</span><br><span class="line">2、View2:作为tableView的tableHeaderView，并添加View1，View2的大小和View1大小相同.</span><br><span class="line">3、在UIScrollViewDelegate方法中进行设计</span><br><span class="line">- (void)scrollViewDidScroll:(UIScrollView *)scrollView &#123;</span><br><span class="line">    CGFloat width &#x3D; UIScreen.mainScreen.bounds.size.width;</span><br><span class="line">    CGFloat viewHeight &#x3D; kScreenWidth * 0.5; &#x2F;&#x2F; View1的初始高度</span><br><span class="line">    CGFloat yOffset &#x3D; scrollView.contentOffset.y;</span><br><span class="line">    if (yOffset &lt; 0) &#123;</span><br><span class="line">        CGFloat totalOffset &#x3D; viewHeight + ABS(yOffset);</span><br><span class="line">        CGFloat f &#x3D; totalOffset &#x2F; viewHeight;</span><br><span class="line">        self.headerView.frame &#x3D; CGRectMake(- (width * f - width) &#x2F; 2, yOffset, width * f, totalOffset);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>10、Masonry制作就宫格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;Objective-C ----&gt; Masonry</span><br><span class="line">&#x2F;**</span><br><span class="line"> 多视图布局</span><br><span class="line"></span><br><span class="line"> @param viewArray 视图数组</span><br><span class="line"> @param column 列数</span><br><span class="line"> @param tbSpeace 视图上下间距</span><br><span class="line"> @param lrSpeace 视图左右间距</span><br><span class="line"> @param topSpeace 和父视图上间距</span><br><span class="line"> @param lrSuperViewSpeace 父视图左右间距</span><br><span class="line"> @param superView 父视图</span><br><span class="line"> @param viewHeight 视图高度</span><br><span class="line"> *&#x2F;</span><br><span class="line">- (void)wd_masLayoutSubViewsWithViewArray:(NSArray&lt;UIView *&gt; *)viewArray</span><br><span class="line">                              columnOfRow:(NSInteger)column</span><br><span class="line">                    topBottomOfItemSpeace:(CGFloat)tbSpeace</span><br><span class="line">                      leftRightItemSpeace:(CGFloat)lrSpeace</span><br><span class="line">                     topOfSuperViewSpeace:(CGFloat)topSpeace</span><br><span class="line">                 leftRightSuperViewSpeace:(CGFloat)lrSuperViewSpeace</span><br><span class="line">                          addToSubperView:(UIView *)superView</span><br><span class="line">                               viewHeight:(CGFloat)viewHeight&#123;</span><br><span class="line">  </span><br><span class="line">                    CGFloat viewWidth &#x3D; superView.bounds.size.width;</span><br><span class="line">                    CGFloat itemWidth &#x3D; (viewWidth - lrSuperViewSpeace * 2 - (column - 1) * lrSpeace) &#x2F; column * 1.0f;</span><br><span class="line">                    CGFloat itemHeight &#x3D; viewHeight;</span><br><span class="line">                    UIView *last &#x3D; nil;</span><br><span class="line">  </span><br><span class="line">                    for (int i &#x3D; 0; i &lt; viewArray.count; i++) &#123;</span><br><span class="line">                        UIView *item &#x3D; viewArray[i];</span><br><span class="line">                        [superView addSubview:item];</span><br><span class="line"></span><br><span class="line">                        [item mas_makeConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">                            make.width.mas_equalTo(itemWidth);</span><br><span class="line">                            make.height.mas_equalTo(itemHeight);</span><br><span class="line">                          </span><br><span class="line">                            CGFloat top &#x3D; topSpeace + (i &#x2F; column) * (itemHeight + tbSpeace);</span><br><span class="line">                            make.top.mas_offset(top);</span><br><span class="line">                            if (!last || (i % column) &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                                make.left.mas_offset(lrSuperViewSpeace);</span><br><span class="line">                            &#125;else&#123;</span><br><span class="line">                                make.left.mas_equalTo(last.mas_right).mas_offset(lrSpeace);</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;];</span><br><span class="line">                      </span><br><span class="line">                        last &#x3D; item;</span><br><span class="line">                    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>11、Snapkit制作九宫格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;Swift ----&gt; SnapKit</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;&#x2F; 多视图布局</span><br><span class="line">    &#x2F;&#x2F;&#x2F;</span><br><span class="line">    &#x2F;&#x2F;&#x2F; - Parameters:</span><br><span class="line">    &#x2F;&#x2F;&#x2F;   - viewArray: 视图数组</span><br><span class="line">    &#x2F;&#x2F;&#x2F;   - columnOfRow: 列数</span><br><span class="line">    &#x2F;&#x2F;&#x2F;   - topBottomOfItemSpeace: 视图上下间距</span><br><span class="line">    &#x2F;&#x2F;&#x2F;   - leftRightItemSpeace: 视图左右间距</span><br><span class="line">    &#x2F;&#x2F;&#x2F;   - topOfSuperViewSpeace: 和父视图上间距</span><br><span class="line">    &#x2F;&#x2F;&#x2F;   - leftRightSuperViewSpeace: 父视图左右间距</span><br><span class="line">    &#x2F;&#x2F;&#x2F;   - addToSubperView: 父视图</span><br><span class="line">    &#x2F;&#x2F;&#x2F;   - viewHeight: 视图高度</span><br><span class="line">    func wd_masLayoutSubViews(viewArray:Array&lt;UIView&gt;,</span><br><span class="line">                              columnOfRow:Int,</span><br><span class="line">                              topBottomOfItemSpeace:CGFloat,</span><br><span class="line">                              leftRightItemSpeace:CGFloat,</span><br><span class="line">                              topOfSuperViewSpeace:CGFloat,</span><br><span class="line">                              leftRightSuperViewSpeace:CGFloat,</span><br><span class="line">                              addToSubperView:UIView,</span><br><span class="line">                              viewHeight:CGFloat) -&gt; Void &#123;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        let viewWidth &#x3D; addToSubperView.bounds.width</span><br><span class="line">        let tempW &#x3D; leftRightSuperViewSpeace * 2 + CGFloat(columnOfRow - 1) * leftRightItemSpeace</span><br><span class="line">        let itemWidth &#x3D; (viewWidth - tempW) &#x2F; CGFloat(columnOfRow)</span><br><span class="line">        let itemHeight &#x3D; viewHeight</span><br><span class="line">        </span><br><span class="line">        print(leftRightSuperViewSpeace,leftRightItemSpeace,itemWidth)</span><br><span class="line">        </span><br><span class="line">        var lastView:UIView?</span><br><span class="line">        </span><br><span class="line">        for (index) in viewArray.enumerated() &#123;</span><br><span class="line">            </span><br><span class="line">            let item &#x3D; viewArray[i]</span><br><span class="line">            addToSubperView.addSubview(item)</span><br><span class="line">            </span><br><span class="line">            item.snp.makeConstraints &#123; (make) in</span><br><span class="line">                make.width.equalTo(itemWidth)</span><br><span class="line">                make.height.equalTo(itemHeight)</span><br><span class="line">                let top &#x3D; topOfSuperViewSpeace + CGFloat(i &#x2F; columnOfRow) * (itemHeight + topBottomOfItemSpeace)</span><br><span class="line">                make.top.equalTo(top)</span><br><span class="line">                </span><br><span class="line">                if !(lastView !&#x3D; nil) || i%columnOfRow &#x3D;&#x3D; 0 &#123;</span><br><span class="line">                    make.left.equalTo(leftRightSuperViewSpeace)</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    make.left.equalTo((lastView?.snp.right)!).offset(leftRightItemSpeace)</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                lastView &#x3D; item</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>12、沉浸式TableView(ScrollView、CollectionView)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (@available(iOS 11.0, *)) &#123;</span><br><span class="line">    self.tableView.contentInsetAdjustmentBehavior &#x3D; UIScrollViewContentInsetAdjustmentNever;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    self.automaticallyAdjustsScrollViewInsets &#x3D; false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>13、通过身份证计算年龄</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;** 通过身份证计算年龄 *&#x2F;</span><br><span class="line">- (NSString *)calculationAgeWithBirthday: (NSString *)birthday &#123;</span><br><span class="line">    NSCalendar *calendar &#x3D; [NSCalendar currentCalendar];</span><br><span class="line">    NSDate *nowDate &#x3D; [NSDate date];</span><br><span class="line">    NSString *birth &#x3D; birthday;</span><br><span class="line">    NSDateFormatter *dateFormatter &#x3D; [[NSDateFormatter alloc]init];</span><br><span class="line">    [dateFormatter setDateFormat:@&quot;yyyy-MM-dd&quot;];</span><br><span class="line">    NSDate *birthDay &#x3D; [dateFormatter dateFromString:birth];</span><br><span class="line">    unsigned int unitFlags &#x3D; NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;</span><br><span class="line">    NSDateComponents *date &#x3D; [calendar components:unitFlags fromDate:birthDay toDate:nowDate options:0];</span><br><span class="line">    if ([date year] &gt; 0) &#123;</span><br><span class="line">        return [NSString stringWithFormat:@&quot;%ld岁&quot;, (long)[date year]];</span><br><span class="line">    &#125; else if([date month] &gt; 0) &#123;</span><br><span class="line">        return [NSString stringWithFormat:@&quot;%ld月&quot;, (long)[date month]];</span><br><span class="line">    &#125;  else if([date day] &gt; 0)&#123;</span><br><span class="line">        return [NSString stringWithFormat:@&quot;%ld天&quot;, (long)[date day]];</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return @&quot;0天&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (NSString *)ageStrFromIdentityCard:(NSString *)numberStr &#123;</span><br><span class="line">    NSString *dateSt;</span><br><span class="line">    NSMutableString *dateS;</span><br><span class="line">    if (numberStr.length &gt; 15) &#123;</span><br><span class="line">        dateSt &#x3D; [numberStr substringWithRange:NSMakeRange(6, 8)];</span><br><span class="line">        dateS &#x3D; [NSMutableString stringWithFormat:@&quot;%@&quot;, dateSt];</span><br><span class="line">        [dateS insertString:@&quot;-&quot; atIndex:4];</span><br><span class="line">        [dateS insertString:@&quot;-&quot; atIndex:7];</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">        &#x2F;&#x2F; 只考虑 19开头的15位的身份证号</span><br><span class="line">        dateSt &#x3D; [NSString stringWithFormat:@&quot;19%@&quot;,[numberStr substringWithRange:NSMakeRange(6, 6)]];</span><br><span class="line">        dateS &#x3D; [NSMutableString stringWithFormat:@&quot;%@&quot;, dateSt];</span><br><span class="line">        [dateS insertString:@&quot;-&quot; atIndex:4];</span><br><span class="line">        [dateS insertString:@&quot;-&quot; atIndex:7];</span><br><span class="line">    &#125;</span><br><span class="line">    return [self calculationAgeWithBirthday:dateS];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      </div>
+      
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-01-20T09:55:22+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2020年1月20日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>开发技巧</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://github.com/wuvdan/wuvdan.github.io/2020/01/16/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/&title=开发技巧 | 一个孤独的搬码猿&pics=https://s2.ax1x.com/2020/01/16/ljLssI.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://github.com/wuvdan/wuvdan.github.io/2020/01/16/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/&title=开发技巧 | 一个孤独的搬码猿&pics=https://s2.ax1x.com/2020/01/16/ljLssI.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://github.com/wuvdan/wuvdan.github.io/2020/01/16/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/&title=开发技巧 | 一个孤独的搬码猿&pics=https://s2.ax1x.com/2020/01/16/ljLssI.jpg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2020/01/16/iOS%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" rel="prev" title="iOS单元测试">
+                                
+                                    iOS单元测试
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 开发技巧</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2020/01/16/%E4%BB%A3%E7%A0%81%E5%9D%97(Snippet)/" rel="prev" title="代码块(Snippet)">
+                                  
+                                      代码块(Snippet)
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 开发技巧</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '开发技巧',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://s2.ax1x.com/2020/01/16/ljLssI.jpg'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+          <p>只要有相见的人，你就不是孤身一人</p>
+
+        
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:wudan_ios@163.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/wudan-ios"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=366043753"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="mailto:wudan_ios@163.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://github.com/wudan-ios"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=366043753"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div></div>
+  <div>
+    本站使用
+    <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a>
+    作为主题
+    
+      ，
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+    。
+  </div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('') {
+          $('').backstretch(
+          ["https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1579177241012&di=3433ccdd27b6df98a73e330e470e668a&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201503%2F25%2F133324rjhfckvd0riifnbj.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1579177241012&di=3433ccdd27b6df98a73e330e470e668a&imgtype=0&src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201503%2F25%2F133324rjhfckvd0riifnbj.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      
+<script src="/js/volantis.js"></script>
+
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "0hYP7twVgltNapFOdvVK552P-gzGzoHsz",
+    appKey: "EfMVhLUzml6p65jP9DyQziwb",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
